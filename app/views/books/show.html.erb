@@ -1,0 +1,8 @@
+<h1><%= @book.title %></h1>
+<h5>By: <%= @book.author.name %></h5>
+<p>Genre: <%= @book.genre.name %></p>
+<p>Pages: <%= @book.pages %></p>
+<p>Rating (0-5): <%= rating_to_words(@book.rating) %></p>
+
+
+<%= link_to "Edit Book", edit_book_path(@book) %> | <%= link_to "Destroy Book", book_path(@book), method: "delete" %>

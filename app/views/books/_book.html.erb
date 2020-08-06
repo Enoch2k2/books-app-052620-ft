@@ -1,0 +1,13 @@
+<div class="col s12 m3">
+  <div class="card teal darken-3">
+    <div class="card-content white-text">
+      <span class="card-title"><%= link_to book.title, book_path(book) %></span>
+      <p>By <%= book.author.name %></p>
+      <p><%= book.genre.name %></p>
+    </div>
+    <div class="card-action">
+      <%= link_to "Edit", edit_book_path(book), class: "blue-text" %>
+      <%= link_to "Destroy", book_path(book), method: "delete", class: "blue-text" %>
+    </div>
+  </div>
+</div>

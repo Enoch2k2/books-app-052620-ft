@@ -1,0 +1,43 @@
+<%= form_for book do |f| %>
+  <div class="input-field">
+    <%= f.text_field :title %>
+    <%= f.label :title %>
+  </div>
+  <h5>Select Author</h5>
+  <%= f.collection_select :author_id, Author.all, :id, :name, prompt: true %>
+  <h5>Select Genre</h5>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: true %>
+  <div class="input-field">
+    <%= f.text_field :pages %>
+    <%= f.label :pages %>
+  </div>
+  <div class="input-field">
+    <%= f.text_field :rating %>
+    <%= f.label :rating %>
+  </div>
+
+  <h5>Create Author</h5>
+  <%= f.fields_for :author, book.build_author do |author_fields| %>
+    <div class="input-field">
+      <%= author_fields.text_field :name %>
+      <%= author_fields.label :name %>
+    </div>
+  <% end %>
+  <h5>Create Genre</h5>
+  <%= f.fields_for :genre, book.build_genre do |genre_fields| %>
+    <div class="input-field">
+      <%= genre_fields.text_field :name %>
+      <%= genre_fields.label :name %>
+    </div>
+
+  <% end %>
+
+  <%= f.submit button_name, class: "btn" %>
+<% end %>
+
+
+<script>
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>
